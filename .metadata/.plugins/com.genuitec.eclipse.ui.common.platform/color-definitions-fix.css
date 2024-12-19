@@ -2222,6 +2222,10 @@ IEclipsePreferences#org-eclipse-ui-workbench {
 		'org.eclipse.ui.editors.printMarginColor=62,70,76'
 		'org.eclipse.ui.editors.stickyLinesSeparatorColor=18,21,22'
 		'org.eclipse.ui.showkeys.backgroundColor=182,190,195'
+		'org.springframework.ide.eclipse.boot.dash.AltTextDecorColor=173,216,230'
+		'org.springframework.ide.eclipse.boot.dash.MutedTextDecorColor=205,210,214'
+		'org.springframework.ide.eclipse.boot.dash.TextDecorColor=144,238,144'
+		'org.springframework.tooling.ls.eclipse.commons.STS4BootMarkerIndicationColor=54,81,25'
 }
 IEclipsePreferences#org-eclipse-wst-css-ui {
 	preferences:
@@ -2315,6 +2319,15 @@ IEclipsePreferences#org-eclipse-wst-jsdt-ui {
 		'semanticHighlighting.methodDeclarationName.strikethrough=false'
 		'semanticHighlighting.methodDeclarationName.underline=false'
 		'tagName=255,255,255'
+}
+IEclipsePreferences#org-eclipse-wst-sse-ui {
+	preferences:
+		'content_assist_completion_replacement_background=200,200,0'
+		'content_assist_completion_replacement_foreground=194,0,0'
+		'content_assist_parameters_background=48,54,59'
+		'content_assist_parameters_foreground=235,237,239'
+		'content_assist_proposals_background=48,54,59'
+		'content_assist_proposals_foreground=235,237,239'
 }
 IEclipsePreferences#org-eclipse-wst-xml-ui {
 	preferences:
