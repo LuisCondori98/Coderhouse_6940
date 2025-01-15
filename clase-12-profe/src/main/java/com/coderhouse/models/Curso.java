@@ -15,7 +15,17 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "Cursos")
 public class Curso {
@@ -37,50 +47,5 @@ public class Curso {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Categoria categoria;
 
-	public Curso() {
-		super();
-	}
-
-	public Curso(String nombre) {
-		this();
-		this.nombre = nombre;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public List<Alumno> getAlumnos() {
-		return alumnos;
-	}
-
-	public void setAlumnos(List<Alumno> alumnos) {
-		this.alumnos = alumnos;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-	@Override
-	public String toString() {
-		return "Curso [id=" + id + ", nombre=" + nombre + "]";
-	}
-
+	
 }

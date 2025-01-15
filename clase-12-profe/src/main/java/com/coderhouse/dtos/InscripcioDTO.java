@@ -7,9 +7,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class InscripcionDTO {
+public class InscripcioDTO {
 
-	private long AlumnoId;
-	private List<Long> CursoIds;
+	private Long alumnoId;
+	
+	private List<Long> cursoIds;
 	
 }

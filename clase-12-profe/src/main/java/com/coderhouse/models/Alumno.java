@@ -14,9 +14,8 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Getter
@@ -24,7 +23,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-
 @Entity
 @Table(name = "Alumnos")
 public class Alumno {
@@ -40,6 +38,7 @@ public class Alumno {
 
 	@Column(unique = true, nullable = false) // Va a ser Unico y No Nulo
 	private int dni;
+	
 	@Column(unique = true, nullable = false)
 	private String legajo;
 

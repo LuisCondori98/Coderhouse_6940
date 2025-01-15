@@ -2,10 +2,10 @@ package com.coderhouse.services;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.coderhouse.dtos.InscripcionDTO;
+import com.coderhouse.dtos.InscripcioDTO;
 import com.coderhouse.models.Alumno;
 import com.coderhouse.models.Curso;
 import com.coderhouse.repositories.AlumnoRepository;
@@ -16,27 +16,30 @@ import jakarta.transaction.Transactional;
 @Service
 public class AlumnoService {
 
+	@Autowired
 	private AlumnoRepository alumnoRepository;
-	private CursoRepository cursoRepository;
 	
-	public List<Alumno> getAllAlumnos(){
+	@Autowired
+	private CursoRepository cursoRepository;
+
+	public List<Alumno> getAllAlumnos() {
 		
 		return alumnoRepository.findAll();
 	}
-	
-	public Alumno findById(long id) {
+
+	public Alumno findById(Long id) {
 		
-		return alumnoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Alumno no encontrado"));
+		return alumnoRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Alumno no encontrado"));
 	}
-	
+
 	@Transactional
 	public Alumno saveAlumno(Alumno alumno) {
-		
 		return alumnoRepository.save(alumno);
 	}
-	
+
 	@Transactional
-	public Alumno updateAlumno(Alumno alumnoDetails, long id) {
+	public Alumno updateAlumnoById(Long id, Alumno alumnoDetails) {
 		
 		Alumno alumno = alumnoRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Alumno no encontrado"));
@@ -57,7 +60,8 @@ public class AlumnoService {
 		return alumnoRepository.save(alumno);
 	}
 	
-	public void deleteAlumno(long id) {
+	
+	public void deleteAlumnoById(Long id) {
 		
 		if(!alumnoRepository.existsById(id)) {
 			
@@ -67,17 +71,18 @@ public class AlumnoService {
 		alumnoRepository.deleteById(id);
 	}
 	
+	
 	@Transactional
-	public Alumno inscribirAlumnoACurso(InscripcionDTO dto) {
+	public Alumno incriscribirAlumnoACursos(InscripcioDTO dto) {
 		
 		Alumno alumno = alumnoRepository.findById(dto.getAlumnoId())
-						.orElseThrow(() -> new IllegalArgumentException("Alumno no encontrado"));
+				.orElseThrow(() -> new IllegalArgumentException("Alumno no encontrado"));
 		
-		for(Long cursoId : dto.getCursoIds()) {
+		for (Long cursoId : dto.getCursoIds()) {
 			
 			Curso curso = cursoRepository.findById(cursoId)
-					.orElseThrow(() -> new IllegalArgumentException("Alumno no encontrado"));
-			
+					.orElseThrow(() -> new IllegalArgumentException("Curso no encontrado"));
+		
 			alumno.getCursos().add(curso);
 			curso.getAlumnos().add(alumno);
 			cursoRepository.save(curso);
@@ -85,4 +90,5 @@ public class AlumnoService {
 		
 		return alumnoRepository.save(alumno);
 	}
+
 }
